@@ -2,52 +2,133 @@ package by.azarenka;
 
 public interface MyDequeue<E> {
 
+    /**
+     * Appends the specified element to the end of this Queue.
+     *
+     * @param e the element append into this queue.
+     * @return <code>true</code> if element don't apended<code>false</code>
+     */
     boolean add(E e);
 
+    /**
+     * Appends the specified element to the start of this Queue.
+     *
+     * @param obj the element append into this queue.
+     * @return <code>true</code> if element don't apended<code>false</code>
+     */
     void addFirst(E obj);
-    // добавляет элемент в начало очереди
 
+    /**
+     * Appends the specified element to the end of this Queue.
+     *
+     * @param obj the element append into this queue.
+     * @return <code>true</code> if element don't apended<code>false</code>
+     */
     void addLast(E obj);
-    //добавляет элемент obj в конец очереди
 
+    /**
+     * Returns first element in this queue without remove. If this queue is empty generates excepion.
+     *
+     * @return <code>obj<code/>
+     * @throws java.util.NoSuchElementException
+     */
     E getFirst();
-    //возвращает без удаления элемент из головы очереди. Если очередь пуста, генерирует исключение NoSuchElementException
 
+    /**
+     * Returns last element in this queue without remove. If this queue is empty generates excepion.
+     *
+     * @return <code>obj<code/>
+     * @throws java.util.NoSuchElementException
+     */
     E getLast();
-    //возвращает без удаления последний элемент очереди. Если очередь пуста, генерирует исключение NoSuchElementException
 
+    /**
+     * Appends the specified element to the start of this Queue.
+     *
+     * @param obj the element append into this queue.
+     * @return <code>true</code> if element don't apended<code>false</code>
+     */
     boolean offerFirst(E obj);
-    //добавляет элемент obj в самое начало очереди. Если элемент удачно добавлен, возвращает true, иначе - false
 
+    /**
+     * Appends the specified element to the end of this Queue.
+     *
+     * @param obj the element append into this queue.
+     * @return <code>true</code> if element don't apended<code>false</code>
+     */
     boolean offerLast(E obj);
-    //добавляет элемент obj в конец очереди. Если элемент удачно добавлен, возвращает true, иначе - false
 
+    /**
+     * Returns first element in this queue without remove.
+     *
+     * @return if size equals 0 <code>null<code/> else <code>E</code>
+     */
     E peekFirst();
-    //возвращает без удаления элемент из начала очереди. Если очередь пуста, возвращает значение null
 
+    /**
+     * Returns end element in this queue without remove.
+     *
+     * @return if size equals 0 <code>null<code/> else <code>E</code>
+     */
     E peekLast();
-    // возвращает без удаления последний элемент очереди. Если очередь пуста, возвращает значение null
 
+    /**
+     * Returns first element in this queue and remove his.
+     *
+     * @return if size equals 0 <code>null</code> else <code>E</code>
+     */
     E pollFirst();
-    //возвращает с удалением элемент из начала очереди. Если очередь пуста, возвращает значение null
 
+    /**
+     * Returns last element in this queue and remove his.
+     *
+     * @return if size equals 0 <code>null</code> else <code>E</code>
+     */
     E pollLast();
-    //возвращает с удалением последний элемент очереди. Если очередь пуста, возвращает значение null
 
+    /**
+     * Returns first element  in this queue and remove his. If this queue is empty generates excepion.
+     *
+     * @return <code>E</code>
+     * @throws java.util.NoSuchElementException
+     */
     E pop();
-    // возвращает с удалением элемент из начала очереди. Если очередь пуста, генерирует исключение NoSuchElementException
 
+    /**
+     * Appends the specified element to the end of this Queue.
+     *
+     * @param element the element append into this queue.
+     * @return <code>element</code>
+     */
     void push(E element);
-    //добавляет элемент в самое начало очереди
 
+    /**
+     * Returns first element  in this queue and remove his. If this queue is empty generates excepion.
+     *
+     * @return <code>E</code>
+     * @throws java.util.NoSuchElementException
+     */
     E removeFirst();
-    //возвращает с удалением элемент из начала очереди. Если очередь пуста, генерирует исключение NoSuchElementException
 
+    /**
+     * Returns last element  in this queue and remove his. If this queue is empty generates excepion.
+     *
+     * @return <code>E</code>
+     * @throws java.util.NoSuchElementException
+     */
     E removeLast();
-    //возвращает с удалением элемент из конца очереди. Если очередь пуста, генерирует исключение NoSuchElementException
 
+    /**
+     * Returns size this queue.
+     *
+     * @return <code>integer</code>
+     */
     int size();
 
+    /**
+     * Checks stack to exist  elements
+     *
+     * @return <code>true</code> or if stack contains no items <code>false</code>
+     */
     boolean isEmpty();
-
 }

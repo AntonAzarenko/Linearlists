@@ -3,8 +3,6 @@ package by.azarenka;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.NoSuchElementException;
 
@@ -14,24 +12,22 @@ public class MyQueueImplTest {
 
     private MyQueue<String> myQueue = new MyQueueImpl<String>();
 
-    private static final Logger log = LoggerFactory.getLogger(MyQueueImplTest.class);
-
     @Before
-    public void setUp() throws Exception {
+    public void testSetUp() throws Exception {
         for (int i = 0; i < 100; i++) {
             myQueue.add(String.valueOf(i));
         }
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void testTearDown() throws Exception {
         for (int i = 0; i < 100; i++) {
             myQueue.poll();
         }
     }
 
     @Test
-    public void add() {
+    public void testAdd() {
         int size = 100;
         for (int i = 0; i < 100; i++) {
             if (myQueue.add(String.valueOf(i))) {
@@ -42,12 +38,12 @@ public class MyQueueImplTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void addNullPointerException() {
-       myQueue.add(null);
+    public void testAddNullPointerException() {
+        myQueue.add(null);
     }
 
     @Test
-    public void offer() {
+    public void testOffer() {
         int size = 100;
         for (int i = 0; i < 100; i++) {
             if (myQueue.add(String.valueOf(i))) {
@@ -58,7 +54,7 @@ public class MyQueueImplTest {
     }
 
     @Test
-    public void remove() {
+    public void testRemove() {
         myQueue.remove();
         assertThat(myQueue.size()).isEqualTo(99);
     }
@@ -72,7 +68,7 @@ public class MyQueueImplTest {
     }
 
     @Test
-    public void element() {
+    public void testElement() {
         String elem = myQueue.element();
         assertThat(elem).isEqualTo("0");
         assertThat(myQueue.size()).isEqualTo(100);
@@ -83,24 +79,24 @@ public class MyQueueImplTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void elementNoSuchElementException() {
+    public void testElementNoSuchElementException() {
         for (int i = 0; i < 100; i++) {
             myQueue.remove();
         }
-        String elem = myQueue.element();
+        myQueue.element();
     }
 
     @Test
-    public void peek() {
+    public void testPeek() {
         String elem = myQueue.peek();
         assertThat(elem).isEqualTo("0");
         assertThat(myQueue.size()).isEqualTo(100);
     }
 
     @Test
-    public void poll() {
+    public void testPoll() {
         int size = 100;
-        for(int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             String element = myQueue.poll();
             assertThat(element).isEqualTo(String.valueOf(i));
             assertThat(myQueue.size()).isEqualTo(--size);

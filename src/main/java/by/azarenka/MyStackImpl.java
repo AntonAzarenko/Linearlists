@@ -9,7 +9,7 @@ public class MyStackImpl<E> implements MyStack<E> {
 
     private int size = 0;
 
-    private int capasity = 12;
+    private int capacity = 12;
 
     @Override
     public boolean isEmpty() {
@@ -18,10 +18,11 @@ public class MyStackImpl<E> implements MyStack<E> {
 
     @Override
     public E push(E e) {
-        if(elements == null){
-            elements = new Object[capasity];
-        }if(elements.length >=size){
-            capasityUp(size + 1);
+        if (elements == null) {
+            elements = new Object[capacity];
+        }
+        if (elements.length >= size) {
+            capacityUp(size + 1);
         }
         elements[size] = e;
         size++;
@@ -31,7 +32,7 @@ public class MyStackImpl<E> implements MyStack<E> {
     @Override
     @SuppressWarnings("unchecked")
     public E peek() {
-        if(size == 0){
+        if (size == 0) {
             throw new EmptyStackException();
         }
         return (E) elements[size - 1];
@@ -40,11 +41,11 @@ public class MyStackImpl<E> implements MyStack<E> {
     @Override
     @SuppressWarnings("unchecked")
     public E pop() {
-        if(size == 0){
+        if (size == 0) {
             throw new EmptyStackException();
         }
-        E tempElement = (E) elements[size-1];
-        elements[size-1] = null;
+        E tempElement = (E) elements[size - 1];
+        elements[size - 1] = null;
         size--;
         return tempElement;
     }
@@ -54,9 +55,9 @@ public class MyStackImpl<E> implements MyStack<E> {
         return size;
     }
 
-    private void capasityUp(int capasity) {
+    private void capacityUp(int capacity) {
         int oldSize = elements.length;
-        int newSize = oldSize + (oldSize >= 2 ? capasity / 2 : capasity);
+        int newSize = oldSize + (oldSize >= 2 ? capacity / 2 : capacity);
         elements = Arrays.copyOf(elements, newSize);
     }
 }

@@ -3,8 +3,6 @@ package by.azarenka;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.EmptyStackException;
 
@@ -14,34 +12,31 @@ public class MyStackImplTest {
 
     private MyStack<String> myStack = new MyStackImpl<String>();
 
-    private static final Logger log = LoggerFactory.getLogger(MyStackImplTest.class);
-
     @Before
-    public void setUp() throws Exception {
+    public void testSetUp() throws Exception {
         for (int i = 0; i < 100; i++) {
             myStack.push(String.valueOf(i));
         }
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void testTearDown() throws Exception {
         for (int i = 0; i < myStack.size(); i++) {
             myStack.pop();
         }
     }
 
     @Test
-    public void isEmpty() {
+    public void testIsEmpty() {
         for (int i = 0; i < 100; i++) {
             assertThat(myStack.isEmpty()).isEqualTo(false);
             myStack.pop();
         }
         assertThat(myStack.isEmpty()).isEqualTo(true);
-
     }
 
     @Test
-    public void push() {
+    public void testPush() {
         for (int i = 0; i < 100; i++) {
             assertThat(myStack.size()).isEqualTo(100 + i);
             myStack.push(String.valueOf(i));
@@ -50,12 +45,12 @@ public class MyStackImplTest {
     }
 
     @Test
-    public void peek() {
+    public void testPeek() {
         assertThat(myStack.peek()).isEqualTo(String.valueOf(99));
     }
 
     @Test(expected = EmptyStackException.class)
-    public void peekNoElement() {
+    public void testPeekNoElement() {
         for (int i = 0; i < 100; i++) {
             myStack.pop();
         }
@@ -63,16 +58,15 @@ public class MyStackImplTest {
     }
 
     @Test
-    public void pop() {
+    public void testPop() {
         int size = myStack.size();
-        log.info(String.valueOf(size));
         assertThat(myStack.pop()).isEqualTo(String.valueOf(99));
         size = size - 1;
         assertThat(size).isEqualTo(size);
     }
 
     @Test(expected = EmptyStackException.class)
-    public void popNoElement() {
+    public void testPopNoElement() {
         for (int i = 0; i < 100; i++) {
             myStack.pop();
         }

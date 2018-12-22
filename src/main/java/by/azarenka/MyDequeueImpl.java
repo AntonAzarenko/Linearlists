@@ -1,6 +1,5 @@
 package by.azarenka;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class MyDequeueImpl<E> implements MyDequeue<E> {
@@ -9,13 +8,13 @@ public class MyDequeueImpl<E> implements MyDequeue<E> {
 
     private int size = 0;
 
-    private int capasity = 12;
+    private int capacity = 12;
 
     public MyDequeueImpl() {
     }
 
-    public MyDequeueImpl(int capasity) {
-        this.capasity = capasity;
+    public MyDequeueImpl(int capacity) {
+        this.capacity = capacity;
     }
 
     @Override
@@ -26,10 +25,10 @@ public class MyDequeueImpl<E> implements MyDequeue<E> {
     @Override
     public void addFirst(E e) {
         if (elements == null) {
-            elements = new Object[capasity];
+            elements = new Object[capacity];
         }
         if (size >= elements.length) {
-            capasityUp(size + 1);
+            capacityUp(size + 1);
         }
         if (size == 0) {
             elements[0] = e;
@@ -65,10 +64,10 @@ public class MyDequeueImpl<E> implements MyDequeue<E> {
             return false;
         }
         if (elements == null) {
-            elements = new Object[capasity];
+            elements = new Object[capacity];
         }
         if (size >= elements.length) {
-            capasityUp(size + 1);
+            capacityUp(size + 1);
         }
         if (size == 0) {
             elements[0] = e;
@@ -86,10 +85,10 @@ public class MyDequeueImpl<E> implements MyDequeue<E> {
             return false;
         }
         if (elements == null) {
-            elements = new Object[capasity];
+            elements = new Object[capacity];
         }
         if (size >= elements.length) {
-            capasityUp(size + 1);
+            capacityUp(size + 1);
         }
         if (size == 0) {
             elements[0] = e;
@@ -188,25 +187,32 @@ public class MyDequeueImpl<E> implements MyDequeue<E> {
         return size != 0;
     }
 
-    private void capasityUp(int capasity) {
+    private void capacityUp(int capacity) {
         int oldSize = elements.length;
-        int newSize = oldSize + (oldSize >= 2 ? capasity / 2 : capasity);
-        elements = Arrays.copyOf(elements, newSize);
+        int newSize = oldSize + (oldSize >= 2 ? capacity / 2 : capacity);
+        Object[] temper = new Object[newSize];
+        for (int i = 0; i < size; i++) {
+            temper[i] = elements[i];
+        }
+        elements = temper;
     }
 
     private void moveLeft() {
         int s = elements.length;
-        Object[] tempory = new Object[s];
-        System.arraycopy(elements, 1, tempory, 0, s - 2);
+        Object[] temper = new Object[s];
+        for (int i = 0; i < size; i++) {
+            temper[i] = elements[i + 1];
+        }
         size--;
-        elements = tempory;
+        elements = temper;
     }
 
     private void moveRight() {
         int s = elements.length;
-        Object[] tempory = new Object[s];
-        int tempEl = size;
-        System.arraycopy(elements, 0, tempory, 1, tempEl);
-        elements = tempory;
+        Object[] temper = new Object[s];
+        for (int i = 0; i < size; i++) {
+            temper[i + 1] = elements[i];
+        }
+        elements = temper;
     }
 }

@@ -1,15 +1,45 @@
 package by.azarenka;
 
-public interface MyStack<E> {
+import java.util.EmptyStackException;
 
+public interface MyStack<E> {
+    /**
+     * Checks stack to exist  elements
+     *
+     * @return <code>true</code> or if stack contains no items <code>false</code>
+     */
     boolean isEmpty(); //Служит для проверки стека на наличие элементов — он возвращает true, если стек пуст.
 
-    E push(E e); //Помещает элемент в вершину стека.
+    /**
+     * Pushes an item onto the top of this stack.
+     *
+     * @param e the item to be pushed onto this stack.
+     * @return e the <code>e</code>
+     */
+    E push(E e);
 
-    E peek();//Возвращает верхний элемент, не удаляя его из стека.
+    /**
+     * Looks at the object at the top of this stack without removing it
+     * from the stack.
+     *
+     * @return
+     * @throws EmptyStackException
+     */
+    E peek();
 
-    E pop();//Извлекает верхний элемент удаляя его из стека.
+    /**
+     * Removes the object at the top of this stack and returns that
+     * object as the value of this function.
+     *
+     * @return
+     * @throws EmptyStackException
+     */
+    E pop();
 
+    /**
+     * Returns size of stack.
+     *
+     * @return <code>integer</code>
+     */
     int size();
-
 }
