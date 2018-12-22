@@ -8,7 +8,7 @@ public interface MyStack<E> {
      *
      * @return <code>true</code> or if stack contains no items <code>false</code>
      */
-    boolean isEmpty(); //Служит для проверки стека на наличие элементов — он возвращает true, если стек пуст.
+    boolean isEmpty();
 
     /**
      * Pushes an item onto the top of this stack.
