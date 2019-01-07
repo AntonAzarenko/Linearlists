@@ -31,7 +31,6 @@ public class MyBinaryTree implements MyTree {
     @Override
     public boolean delete(Integer number) {
         if (root == null) throw new NullPointerException("Tree is empty");
-        delete(number, root);
         return true;
     }
 

@@ -26,6 +26,18 @@ public class MyBinaryTreeTest {
         assertThat(true).isEqualTo(tree.search(50));
     }
 
+    @Test
+    public void testAddIsFalse() {
+        tree = new MyBinaryTree();
+        assertThat(false).isEqualTo(tree.search(80));
+    }
+
+    @Test
+    public void testAddIsContains() {
+        tree.add(50);
+        assertThat(false).isEqualTo(tree.add(50));
+    }
+
     @Test(expected = NullPointerException.class)
     public void testAddIsNull() {
         tree.add(null);
@@ -43,7 +55,7 @@ public class MyBinaryTreeTest {
         tree.add(60);
         tree.add(40);
         tree.add(55);
-        tree.delete(40);
+        assertThat(true).isEqualTo(tree.delete(40));
         assertThat(false).isEqualTo(tree.search(40));
     }
 
@@ -92,7 +104,7 @@ public class MyBinaryTreeTest {
     }
 
     @Test
-    public void search(){
+    public void search() {
         tree.add(50);
         tree.add(60);
         tree.add(40);
@@ -101,7 +113,7 @@ public class MyBinaryTreeTest {
     }
 
     @Test
-    public void searchIfNumberAbsent(){
+    public void searchIfNumberAbsent() {
         tree.add(50);
         tree.add(60);
         tree.add(40);
@@ -110,13 +122,13 @@ public class MyBinaryTreeTest {
     }
 
     @Test
-    public void testOutput(){
+    public void testOutput() {
         tree.add(50);
         tree.add(60);
         tree.add(40);
         tree.add(55);
         Object[] objects = tree.output();
-        for(Object current : objects){
+        for (Object current : objects) {
             System.out.println(current.toString());
         }
     }
